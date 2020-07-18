@@ -32,6 +32,9 @@ async function isNextReleaseHealthy(release, app) {
   const pods = JSON.parse(releasesOutput).pods;
   const pod = pods[0];
 
+  core.info(`${parseInt(pod.version)}`);
+  core.info(`${release}`);
+
   return pods.length === 1 && parseInt(pod.version) === release && pod.status === "Healthy";
 }
 
